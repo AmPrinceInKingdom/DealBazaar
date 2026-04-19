@@ -2,24 +2,53 @@ export type Product = {
   id: string;
   name: string;
   slug: string;
-
-  price: string;
-  oldPrice?: string;
-
-  description: string;
   category: string;
+  brand: string;
+  imageUrl: string;
+  price: number;
+  oldPrice?: number;
+  rating: number;
+  reviewsCount: number;
+  inStock: boolean;
+  isFeatured?: boolean;
+  isBestSeller?: boolean;
+  isNewArrival?: boolean;
+  shortDescription: string;
+};
 
-  inStock?: boolean;
+export type ProductSpecification = {
+  label: string;
+  value: string;
+};
 
-  // main image
-  image: string;
+export type ProductReview = {
+  id: string;
+  author: string;
+  date: string;
+  rating: number;
+  title: string;
+  body: string;
+  isVerifiedPurchase?: boolean;
+  image?: string;
+};
 
-  // gallery images (links)
-  imageLinks?: string[];
+export type ProductDetailsContent = {
+  description: string;
+  galleryImages: string[];
+  specifications: ProductSpecification[];
+  reviews: ProductReview[];
+  storeName?: string;
+  variants: ProductDetailsVariant[];
+};
 
-  // uploaded images (base64 / storage)
-  storageImages?: string[];
-
-  // combined images (auto)
-  images?: string[];
+export type ProductDetailsVariant = {
+  id: string;
+  sku: string;
+  name: string | null;
+  options: Record<string, string>;
+  price: number;
+  oldPrice: number | null;
+  stockQuantity: number;
+  imageUrl: string | null;
+  isDefault: boolean;
 };
